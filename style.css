@@ -1,0 +1,27 @@
+#main {
+    border: 2px solid red;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 25%;
+    height: 75vh;
+    border: 2px solid black;
+}
+
+#display {
+    background-color: powderblue;
+}
+
+.numButtons {
+    display: flex;
+    justify-content: space-around;
+}

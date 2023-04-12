@@ -1,4 +1,8 @@
 let total = 0;
+let firstNumber;
+let operator;
+let secondNumber;
+
 // Basic Functions
 
 // Add
