@@ -21,7 +21,11 @@
     background-color: powderblue;
 }
 
-.numButtons {
+.rows {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+}
+.numButtons {
+    border: 2px solid blue;
+    border-radius: 2%;
 }
