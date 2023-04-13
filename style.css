@@ -11,21 +11,27 @@
 #calculator {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     width: 25%;
     height: 75vh;
     border: 2px solid black;
 }
-
 #display {
-    background-color: powderblue;
-}
-
-.rows {
     display: flex;
-    justify-content: space-evenly;
+    background-color: powderblue;
+    justify-content: end;
+    align-items: end;
+    height: 20%;
+    font-size: larger;
 }
-.numButtons {
-    border: 2px solid blue;
-    border-radius: 2%;
+#buttonsGroup {
+    display: flex;
+    flex-grow: 1;
 }
+ #first3columns {
+    border: 2px solid lime;
+    flex-grow: 3;
+ }
+ #lastcolumn {
+    border: 2px solid red;
+    flex-grow: 1;
+ }

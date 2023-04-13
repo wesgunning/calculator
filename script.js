@@ -28,3 +28,8 @@ function divide(num) {
     total /= num;
     return total;
 }
+
+// Operate
+function operate(operator, firstNumber, secondNumber) {
+    
+}
