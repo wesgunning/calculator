@@ -25,13 +25,23 @@
 }
 #buttonsGroup {
     display: flex;
-    flex-grow: 1;
+    flex-grow: 3;
 }
  #first3columns {
     border: 2px solid lime;
-    flex-grow: 3;
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
  }
  #lastcolumn {
     border: 2px solid red;
-    flex-grow: 1;
+    width: 25%;
+ }
+ .buttons {
+    border: 2px solid purple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    min-width: 25%;
  }
