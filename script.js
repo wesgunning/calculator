@@ -7,6 +7,13 @@ let difference;
 let product;
 let dividend;
 
+// Display
+const display = document.querySelector('#display');
+display.textContent = "0";
+
+// Number buttons
+
+
 // Basic Functions
 
 // Add
