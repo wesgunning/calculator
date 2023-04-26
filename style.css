@@ -32,10 +32,23 @@
     width: 75%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
  }
  #lastcolumn {
     border: 2px solid red;
     width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+ }
+.lastcolumnbuttons {
+    display: flex;
+    flex: 1;
+}
+ #equals {
+    display: flex;
+    flex: 2;
  }
  .buttons {
     border: 2px solid purple;
