@@ -1,11 +1,14 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
 #main {
     border: 2px solid red;
     width: 100%;
-    height: auto;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem 0;
 }
 
 #calculator {
@@ -14,6 +17,7 @@
     width: 25%;
     height: 75vh;
     border: 2px solid black;
+    background-color: rgb(99, 98, 98);
 }
 #display {
     display: flex;
@@ -28,7 +32,6 @@
     flex-grow: 3;
 }
  #first3columns {
-    border: 2px solid lime;
     width: 75%;
     display: flex;
     flex-wrap: wrap;
@@ -36,7 +39,6 @@
     align-items: center;
  }
  #lastcolumn {
-    border: 2px solid red;
     width: 25%;
     display: flex;
     flex-direction: column;
@@ -51,7 +53,7 @@
     flex: 2;
  }
  .buttons {
-    border: 2px solid purple;
+    border: 2px solid rgb(6, 0, 128);
     display: flex;
     justify-content: center;
     align-items: center;
