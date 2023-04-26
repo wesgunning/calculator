@@ -12,7 +12,18 @@ const display = document.querySelector('#display');
 display.textContent = "0";
 
 // Number buttons
-
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        console.log(button.value);
+    })
+    button.addEventListener('mousedown', () => {
+        button.style.backgroundColor = 'white';
+    })
+    button.addEventListener('mouseup', () => {
+        button.style.backgroundColor = 'rgb(99, 98, 98)';
+    })
+});
 
 // Basic Functions
 
