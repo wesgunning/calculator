@@ -6,6 +6,7 @@ let sum;
 let difference;
 let product;
 let dividend;
+let keyCount;
 
 // Display
 const display = document.querySelector('#display');
@@ -73,6 +74,10 @@ function operate(operator, firstNumber, secondNumber) {
 function changeDisplay(e) {
     if(this.value == 'clear') {
         display.textContent = '0';
+        operator = '';
+        firstNumber = '';
+        secondNumber = '';
+        keyCount = 0;
     }
     else if (this.value == '.') {
         let count = 0;
@@ -86,12 +91,36 @@ function changeDisplay(e) {
         }
     }
     else if (this.classList.contains('operator')) {
-        display.textContent = 'true';
+        if (firstNumber == null) {
+            firstNumber = parseFloat(display.textContent);
+            operator = this.value;
+            keyCount = 0;
+            return;
+        }
+        else if (firstNumber != null && operator == null) {
+            operator = this.value;
+        }
+        else if (secondNumber == null) {
+            display.textContent += this.value.toString();
+            secondNumber = parseFloat(display.textContent);
+            display.textContent = (operate(operator, firstNumber, secondNumber));
+            // Reset
+            firstNumber = parseFloat(display.textContent);
+            secondNumber = null;
+            operator = null;
+            keyCount = 0;
+        }
     }
     else if (display.textContent == '0' && this.value != '.') {
         display.textContent = this.value;
     }
+    else if (firstNumber != null && keyCount == 0) {
+        display.textContent = '';
+        display.textContent += this.value.toString();
+        keyCount += 1;
+    }
     else {
         display.textContent += this.value.toString();
+        keyCount += 1;
     }
 }
