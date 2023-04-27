@@ -99,6 +99,14 @@ function changeDisplay(e) {
         }
         else if (firstNumber != null && operator == null) {
             operator = this.value;
+            display.textContent += this.value.toString();
+            secondNumber = parseFloat(display.textContent);
+            display.textContent = (operate(operator, firstNumber, secondNumber));
+            // Reset
+            firstNumber = parseFloat(display.textContent);
+            secondNumber = null;
+            operator = null;
+            keyCount = 0;
         }
         else if (secondNumber == null) {
             display.textContent += this.value.toString();
