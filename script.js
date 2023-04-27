@@ -14,9 +14,7 @@ display.textContent = "0";
 // Number buttons
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        console.log(button.value);
-    })
+    button.addEventListener('click', changeDisplay);
     button.addEventListener('mousedown', () => {
         button.style.backgroundColor = 'white';
     })
@@ -68,5 +66,32 @@ function operate(operator, firstNumber, secondNumber) {
     else if (operator == "/") {
         divide(firstNumber, secondNumber);
         return dividend;   
+    }
+}
+
+// Change display
+function changeDisplay(e) {
+    if(this.value == 'clear') {
+        display.textContent = '0';
+    }
+    else if (this.value == '.') {
+        let count = 0;
+        for (let i=0; i < display.textContent.length; i++) {
+            if (display.textContent[i] == '.') {
+                count += 1;
+            }
+        }
+        if (count == 0) {
+            display.textContent += this.value;
+        }
+    }
+    else if (this.classList.contains('operator')) {
+        display.textContent = 'true';
+    }
+    else if (display.textContent == '0' && this.value != '.') {
+        display.textContent = this.value;
+    }
+    else {
+        display.textContent += this.value.toString();
     }
 }
