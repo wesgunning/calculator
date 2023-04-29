@@ -88,6 +88,9 @@ function changeDisplay(e) {
         secondNumber = null;
         keyCount = 0;
     }
+    else if (this.value == '+/-') {
+        display.textContent *= -1;
+    }
     else if (this.classList.contains('operator')) {
         if (firstNumber == null) {
             firstNumber = parseFloat(display.textContent);
