@@ -74,21 +74,9 @@ function operate(operator, firstNumber, secondNumber) {
 function changeDisplay(e) {
     if(this.value == 'clear') {
         display.textContent = '0';
-        operator = '';
         firstNumber = null;
         secondNumber = null;
         keyCount = 0;
-    }
-    else if (this.value == '.') {
-        let count = 0;
-        for (let i=0; i < display.textContent.length; i++) {
-            if (display.textContent[i] == '.') {
-                count += 1;
-            }
-        }
-        if (count == 0) {
-            display.textContent += this.value;
-        }
     }
     else if (this.classList.contains('operator')) {
         if (firstNumber == null) {
@@ -126,6 +114,21 @@ function changeDisplay(e) {
     }
     else if (display.textContent == '0' && this.value != '.') {
         display.textContent = this.value;
+    }
+    else if (this.value == '.') {
+        let count = 0;
+        for (let i=0; i < display.textContent.length; i++) {
+            if (display.textContent[i] == '.') {
+                count += 1;
+            }
+        }
+        if (count == 0) {
+            display.textContent += this.value;
+        }
+        if (firstNumber != null) {
+            display.textContent = '0.';
+            keyCount += 1;
+        }
     }
     // Removes firstNumber from display and allows input of secondNumber
     else if (firstNumber != null && keyCount == 0) {
