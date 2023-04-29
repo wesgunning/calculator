@@ -78,6 +78,16 @@ function changeDisplay(e) {
         secondNumber = null;
         keyCount = 0;
     }
+    else if (this.value == '%') {
+        operator = '/';
+        firstNumber = parseFloat(display.textContent);
+        secondNumber = 100;
+        display.textContent = (operate(operator,firstNumber,secondNumber));
+        // Reset
+        firstNumber = parseFloat(display.textContent);
+        secondNumber = null;
+        keyCount = 0;
+    }
     else if (this.classList.contains('operator')) {
         if (firstNumber == null) {
             firstNumber = parseFloat(display.textContent);
