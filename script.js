@@ -75,8 +75,8 @@ function changeDisplay(e) {
     if(this.value == 'clear') {
         display.textContent = '0';
         operator = '';
-        firstNumber = '';
-        secondNumber = '';
+        firstNumber = null;
+        secondNumber = null;
         keyCount = 0;
     }
     else if (this.value == '.') {
@@ -97,7 +97,7 @@ function changeDisplay(e) {
             keyCount = 0;
             return;
         }
-        else if (firstNumber != null && operator == null) {
+        /*else if (firstNumber != null && operator == null) {
             operator = this.value;
             display.textContent += this.value.toString();
             secondNumber = parseFloat(display.textContent);
@@ -107,21 +107,27 @@ function changeDisplay(e) {
             secondNumber = null;
             operator = null;
             keyCount = 0;
+        }*/
+        // Allows new operator key input without storing secondNumber or calling operate()
+        else if (secondNumber == null && keyCount == 0) {
+            operator = this.value;
+            return;
         }
         else if (secondNumber == null) {
-            display.textContent += this.value.toString();
+            //display.textContent += this.value.toString();
             secondNumber = parseFloat(display.textContent);
             display.textContent = (operate(operator, firstNumber, secondNumber));
             // Reset
             firstNumber = parseFloat(display.textContent);
             secondNumber = null;
-            operator = null;
+            operator = this.value;
             keyCount = 0;
         }
     }
     else if (display.textContent == '0' && this.value != '.') {
         display.textContent = this.value;
     }
+    // Removes firstNumber from display and allows input of secondNumber
     else if (firstNumber != null && keyCount == 0) {
         display.textContent = '';
         display.textContent += this.value.toString();
