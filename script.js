@@ -1,4 +1,4 @@
-let total = 0;
+// Global variables
 let firstNumber;
 let operator;
 let secondNumber;
@@ -7,6 +7,7 @@ let difference;
 let product;
 let dividend;
 let keyCount;
+let storedSecondNumber;
 
 // Display
 const display = document.querySelector('#display');
@@ -76,6 +77,7 @@ function changeDisplay(e) {
         display.textContent = '0';
         firstNumber = null;
         secondNumber = null;
+        storedSecondNumber = null;
         keyCount = 0;
     }
     else if (this.value == '%') {
@@ -91,6 +93,23 @@ function changeDisplay(e) {
     else if (this.value == '+/-') {
         display.textContent *= -1;
     }
+    else if (this.value == '=') {
+        if (storedSecondNumber == null && keyCount == 0) {
+            storedSecondNumber = parseFloat(display.textContent);
+            secondNumber = storedSecondNumber;
+        }
+        else if (keyCount > 0) {
+            secondNumber = parseFloat(display.textContent);
+        }
+        else {
+            secondNumber = storedSecondNumber;
+        }
+        display.textContent = (operate(operator, firstNumber, secondNumber));
+        firstNumber = parseFloat(display.textContent);
+        storedSecondNumber = secondNumber;
+        secondNumber = null;
+        keyCount = 0;
+    }
     else if (this.classList.contains('operator')) {
         if (firstNumber == null) {
             firstNumber = parseFloat(display.textContent);
@@ -98,28 +117,18 @@ function changeDisplay(e) {
             keyCount = 0;
             return;
         }
-        /*else if (firstNumber != null && operator == null) {
-            operator = this.value;
-            display.textContent += this.value.toString();
-            secondNumber = parseFloat(display.textContent);
-            display.textContent = (operate(operator, firstNumber, secondNumber));
-            // Reset
-            firstNumber = parseFloat(display.textContent);
-            secondNumber = null;
-            operator = null;
-            keyCount = 0;
-        }*/
         // Allows new operator key input without storing secondNumber or calling operate()
         else if (secondNumber == null && keyCount == 0) {
             operator = this.value;
+            storedSecondNumber = null;
             return;
         }
         else if (secondNumber == null) {
-            //display.textContent += this.value.toString();
             secondNumber = parseFloat(display.textContent);
             display.textContent = (operate(operator, firstNumber, secondNumber));
             // Reset
             firstNumber = parseFloat(display.textContent);
+            storedSecondNumber = secondNumber;
             secondNumber = null;
             operator = this.value;
             keyCount = 0;
