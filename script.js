@@ -92,6 +92,9 @@ function changeDisplay(e) {
     }
     else if (this.value == '+/-') {
         display.textContent *= -1;
+        firstNumber = parseFloat(display.textContent);
+        secondNumber = null;
+        keyCount = 0;
     }
     else if (this.value == '=') {
         if (storedSecondNumber == null && keyCount == 0) {
