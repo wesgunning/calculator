@@ -25,6 +25,15 @@ buttons.forEach((button) => {
     })
 });
 
+// Keypress events
+window.addEventListener('keydown', function(e) {
+        buttons.forEach((button) => {
+            if (button.value == e.key) {
+                console.log(button.value);
+            }
+    });
+});
+
 // Basic Functions
 
 // Add
