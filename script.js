@@ -30,6 +30,10 @@ window.addEventListener('keydown', function(e) {
         buttons.forEach((button) => {
             if (button.value == e.key) {
                 console.log(button.value);
+                changeDisplay(button);
+            }
+            else if (button.value == '=' && e.key == 'Enter'){
+                changeDisplay(button);
             }
     });
 });
@@ -82,7 +86,12 @@ function operate(operator, firstNumber, secondNumber) {
 
 // Change display
 function changeDisplay(e) {
-    if(this.value == 'clear') {
+    if (e.value != undefined && this.value != e.value) {
+        this.value = e.value;
+        this.classList = e.classList;
+        changeDisplay(e);
+    }
+    else if(this.value == 'clear') {
         display.textContent = '0';
         firstNumber = null;
         secondNumber = null;
