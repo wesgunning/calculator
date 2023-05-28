@@ -18,19 +18,18 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', changeDisplay);
     button.addEventListener('mousedown', keypress);
-    /*button.addEventListener('mouseup', () => {
-        button.style.backgroundColor = 'rgb(99, 98, 98)';
-    })*/
 });
 
 // Keypress events
 window.addEventListener('keydown', function(e) {
         buttons.forEach((button) => {
             if (button.value == e.key) {
+                keypress(button);
                 console.log(button.value);
                 changeDisplay(button);
             }
             else if (button.value == '=' && e.key == 'Enter'){
+                keypress(button);
                 changeDisplay(button);
             }
     });
@@ -83,10 +82,20 @@ function operate(operator, firstNumber, secondNumber) {
 }
 // Keypress visual
 function keypress(e) {
-    e.target.style.backgroundColor = 'white';
-    e.target.addEventListener('mouseup', () => {
-        e.target.style.backgroundColor = 'rgb(99, 98, 98)';
-    })
+    let mouseDownColor = 'white';
+    let mouseUpColor = 'rgb(99, 98, 98)';
+    if (e.type == 'mousedown') {
+        e.target.style.backgroundColor = mouseDownColor;
+        e.target.addEventListener('mouseup', () => {
+        e.target.style.backgroundColor = mouseUpColor;
+        })
+    }
+    else {
+        e.style.backgroundColor = mouseDownColor;
+        setTimeout(() => {
+        e.style.backgroundColor = mouseUpColor;
+        }, 100)
+    }
 }
 
 // Change display
