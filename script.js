@@ -17,12 +17,10 @@ display.textContent = "0";
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', changeDisplay);
-    button.addEventListener('mousedown', () => {
-        button.style.backgroundColor = 'white';
-    })
-    button.addEventListener('mouseup', () => {
+    button.addEventListener('mousedown', keypress);
+    /*button.addEventListener('mouseup', () => {
         button.style.backgroundColor = 'rgb(99, 98, 98)';
-    })
+    })*/
 });
 
 // Keypress events
@@ -38,7 +36,7 @@ window.addEventListener('keydown', function(e) {
     });
 });
 
-// Basic Functions
+// Basic Operator Functions
 
 // Add
 function add(num1, num2) {
@@ -82,6 +80,13 @@ function operate(operator, firstNumber, secondNumber) {
         divide(firstNumber, secondNumber);
         return dividend;   
     }
+}
+// Keypress visual
+function keypress(e) {
+    e.target.style.backgroundColor = 'white';
+    e.target.addEventListener('mouseup', () => {
+        e.target.style.backgroundColor = 'rgb(99, 98, 98)';
+    })
 }
 
 // Change display
