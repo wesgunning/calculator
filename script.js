@@ -22,6 +22,9 @@ buttons.forEach((button) => {
 
 // Keypress events
 window.addEventListener('keydown', function(e) {
+        if (e.key == 'Backspace') {
+            changeDisplay(e.key);
+        }
         buttons.forEach((button) => {
             if (button.value == e.key) {
                 keypress(button);
@@ -100,7 +103,21 @@ function keypress(e) {
 
 // Change display
 function changeDisplay(e) {
-    if (e.value != undefined && this.value != e.value) {
+    if (e == 'Backspace') {
+        if (display.textContent != '0') {
+            let current = display.textContent;
+            if (current.length == 1) {
+                display.textContent = '0';
+            }
+            else {
+                display.textContent = current.substr(0, current.length - 1);
+            }
+        }
+        else {
+            return;
+        }
+    }
+    else if (e.value != undefined && this.value != e.value) {
         this.value = e.value;
         this.classList = e.classList;
         changeDisplay(e);
