@@ -14,21 +14,28 @@ body {
 #calculator {
     display: flex;
     flex-direction: column;
-    width: 25%;
+    min-width: 25%;
     height: 75vh;
     border: 2px solid black;
+    border-radius: 1rem;
+    background-color: navy;
 }
 #display {
     display: flex;
-    background-color: powderblue;
+    color: white;
+    border-bottom: 0.2rem solid;
+    border-bottom-color: white;
+    border-radius: inherit;
     justify-content: end;
-    align-items: end;
+    align-items: center;
     height: 20%;
-    font-size: larger;
+    font-size: 4em;
+    padding-right: 0.25em;
 }
 #buttonsGroup {
     display: flex;
     flex: 3;
+    margin: 5%;
 }
  #first3columns {
     width: 75%;
@@ -48,17 +55,18 @@ body {
  }
 .lastcolumnbuttons {
     display: flex;
-    flex: 1;
+    height: 20%;
 }
  #equals {
     display: flex;
     flex: 2;
  }
  .buttons {
-    border: 1px solid rgb(6, 0, 128);
     display: flex;
+    font-size: x-large;
     justify-content: center;
     align-items: center;
     min-width: 30%;
     background-color: rgb(99, 98, 98);
+    border-radius: 1rem;
  }
