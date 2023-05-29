@@ -104,7 +104,10 @@ function keypress(e) {
 // Change display
 function changeDisplay(e) {
     if (e == 'Backspace') {
-        if (display.textContent != '0') {
+        if (keyCount == 0) {
+            return;
+        }
+        else if (display.textContent != '0') {
             let current = display.textContent;
             if (current.length == 1) {
                 display.textContent = '0';
@@ -188,6 +191,7 @@ function changeDisplay(e) {
     }
     else if (display.textContent == '0' && this.value != '.') {
         display.textContent = this.value;
+        keyCount += 1;
     }
     else if (this.value == '.') {
         let count = 0;
