@@ -60,8 +60,15 @@ function multiply(num1, num2) {
 
 // Divide
 function divide(num1, num2) {
-    dividend = num1 / num2;
-    return dividend;
+    if (num2 == 0) {
+        alert("Oops! \nLooks like you tried to break reality & divide by zero. \nUnless you're an evil villain bent on universal destruction, please try again!");
+        dividend = num1;
+        return dividend;
+    }
+    else {
+        dividend = num1 / num2;
+        return dividend;
+    }
 }
 
 // Operate
