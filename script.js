@@ -132,6 +132,10 @@ function changeDisplay(e) {
             }
             else {
                 display.textContent = current.substr(0, current.length - 1);
+                fontEnlarge();
+                while (display.scrollWidth >= displayWrap.scrollWidth) {
+                    fontShrink();
+                }
             }
         }
         else {
@@ -154,8 +158,11 @@ function changeDisplay(e) {
         else if (secondNumber == null) {
             secondNumber = parseFloat(display.textContent);
             display.textContent = (operate(operator, firstNumber, secondNumber));
-            if (display.scrollWidth >= displayWrap.scrollWidth) {
+            if (display.textContent.length > 15) {
                 makeScientific();
+            }
+            while (display.scrollWidth >= displayWrap.scrollWidth) {
+                fontShrink();
             }
             // Reset
             firstNumber = parseFloat(display.textContent);
@@ -183,8 +190,11 @@ function changeDisplay(e) {
         firstNumber = parseFloat(display.textContent);
         secondNumber = 100;
         display.textContent = (operate(operator,firstNumber,secondNumber));
-        if (display.scrollWidth >= displayWrap.scrollWidth) {
+        if (display.textContent.length > 15) {
             makeScientific();
+        }
+        while (display.scrollWidth >= displayWrap.scrollWidth) {
+            fontShrink();
         }
         // Reset
         firstNumber = parseFloat(display.textContent);
@@ -236,7 +246,7 @@ function changeDisplay(e) {
         else if (secondNumber == null) {
             secondNumber = parseFloat(display.textContent);
             display.textContent = (operate(operator, firstNumber, secondNumber));
-            if (display.scrollWidth >= displayWrap.scrollWidth) {
+            while (display.scrollWidth >= displayWrap.scrollWidth) {
                 fontShrink();
             }
             // Reset
@@ -276,7 +286,7 @@ function changeDisplay(e) {
     else {
         display.textContent += this.value.toString();
         keyCount += 1;
-        if (display.scrollWidth >= displayWrap.scrollWidth) {
+        while (display.scrollWidth >= displayWrap.scrollWidth) {
             fontShrink();
         }
     }
