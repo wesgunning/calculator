@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Calculator</title>
     <script src = "script.js" defer></script>
+    <script src="https://kit.fontawesome.com/f7e6ad2e98.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="main">
         <div id="calculator">
-            <div id="display">Display numbers here</div>
+            <div id="displayWrap">
+                <div id="display">Display numbers here</div>
+            </div>
             <div id="buttonsGroup">
                 <div id="first3columns">
                     <button class="buttons firstcolumnbuttons" id="clear" value="clear">C</button>
@@ -36,6 +39,12 @@
                     <button class="buttons lastcolumnbuttons operator" id="add" value="+">+</button>
                     <button class="buttons lastcolumnbuttons" id="equals" value="=">=</button>
                 </div>
+            </div>
+        </div>
+        <div id="signature">
+            <div id="signature_centered">
+                <a href="https://github.com/wesgunning"><i class="fa-brands fa-github"></i></a>
+                <p id="name">Created by Wes G.</p>
             </div>
         </div>
     </div>

@@ -12,6 +12,7 @@ let storedSecondNumber;
 // Display
 const display = document.querySelector('#display');
 display.textContent = "0";
+const displayWrap = document.querySelector('#displayWrap');
 
 // Number buttons
 const buttons = document.querySelectorAll('button');
@@ -224,5 +225,13 @@ function changeDisplay(e) {
     else {
         display.textContent += this.value.toString();
         keyCount += 1;
+        if (display.scrollWidth >= displayWrap.scrollWidth) {
+            if (display.style.fontSize == '') {
+                display.style.fontSize = '4em';
+            }
+            let currentSize = display.style.fontSize.substr(0,1);
+            let newSize = (currentSize * 0.99) + 'em';
+            display.style.fontSize = newSize;
+        }
     }
 }
