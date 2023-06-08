@@ -209,8 +209,11 @@ function changeDisplay(e) {
             secondNumber = storedSecondNumber;
         }
         display.textContent = (operate(operator, firstNumber, secondNumber));
-        if (display.scrollWidth >= displayWrap.scrollWidth) {
+        if (display.textContent.length > 15) {
             makeScientific();
+        }
+        while (display.scrollWidth >= displayWrap.scrollWidth) {
+            fontShrink();
         }
         firstNumber = parseFloat(display.textContent);
         storedSecondNumber = secondNumber;
@@ -234,7 +237,7 @@ function changeDisplay(e) {
             secondNumber = parseFloat(display.textContent);
             display.textContent = (operate(operator, firstNumber, secondNumber));
             if (display.scrollWidth >= displayWrap.scrollWidth) {
-                makeScientific();
+                fontShrink();
             }
             // Reset
             firstNumber = parseFloat(display.textContent);
@@ -274,13 +277,7 @@ function changeDisplay(e) {
         display.textContent += this.value.toString();
         keyCount += 1;
         if (display.scrollWidth >= displayWrap.scrollWidth) {
-            if (display.style.fontSize == '') {
-                fontEnlarge();
-            }
-            let fontSize = display.style.fontSize;
-            let currentSize = fontSize.substr(0,fontSize.length-2);
-            let newSize = (currentSize * 0.9) + 'em';
-            display.style.fontSize = newSize;
+            fontShrink();
         }
     }
 }
@@ -289,4 +286,14 @@ function fontEnlarge() {
 }
 function makeScientific() {
     display.textContent = parseFloat(display.textContent).toExponential(4);
+    fontEnlarge();
+}
+function fontShrink() {
+    if (display.style.fontSize == '') {
+        fontEnlarge();
+    }
+    let fontSize = display.style.fontSize;
+    let currentSize = fontSize.substr(0,fontSize.length-2);
+    let newSize = (currentSize * 0.9) + 'em';
+    display.style.fontSize = newSize;
 }
