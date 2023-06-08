@@ -154,6 +154,9 @@ function changeDisplay(e) {
         else if (secondNumber == null) {
             secondNumber = parseFloat(display.textContent);
             display.textContent = (operate(operator, firstNumber, secondNumber));
+            if (display.scrollWidth >= displayWrap.scrollWidth) {
+                makeScientific();
+            }
             // Reset
             firstNumber = parseFloat(display.textContent);
             storedSecondNumber = secondNumber;
@@ -180,6 +183,9 @@ function changeDisplay(e) {
         firstNumber = parseFloat(display.textContent);
         secondNumber = 100;
         display.textContent = (operate(operator,firstNumber,secondNumber));
+        if (display.scrollWidth >= displayWrap.scrollWidth) {
+            makeScientific();
+        }
         // Reset
         firstNumber = parseFloat(display.textContent);
         secondNumber = null;
@@ -204,7 +210,7 @@ function changeDisplay(e) {
         }
         display.textContent = (operate(operator, firstNumber, secondNumber));
         if (display.scrollWidth >= displayWrap.scrollWidth) {
-            display.textContent = parseFloat(display.textContent).toExponential(4);
+            makeScientific();
         }
         firstNumber = parseFloat(display.textContent);
         storedSecondNumber = secondNumber;
@@ -227,6 +233,9 @@ function changeDisplay(e) {
         else if (secondNumber == null) {
             secondNumber = parseFloat(display.textContent);
             display.textContent = (operate(operator, firstNumber, secondNumber));
+            if (display.scrollWidth >= displayWrap.scrollWidth) {
+                makeScientific();
+            }
             // Reset
             firstNumber = parseFloat(display.textContent);
             storedSecondNumber = secondNumber;
@@ -277,4 +286,7 @@ function changeDisplay(e) {
 }
 function fontEnlarge() {
     display.style.fontSize = '4em';
+}
+function makeScientific() {
+    display.textContent = parseFloat(display.textContent).toExponential(4);
 }
