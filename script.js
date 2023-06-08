@@ -29,7 +29,6 @@ window.addEventListener('keydown', function(e) {
         buttons.forEach((button) => {
             if (button.value == e.key) {
                 keypress(button);
-                console.log(button.value);
                 changeDisplay(button);
             }
             else if (button.value == '=' && e.key == 'Enter'){
@@ -139,6 +138,7 @@ function changeDisplay(e) {
         secondNumber = null;
         storedSecondNumber = null;
         keyCount = 0;
+        fontEnlarge();
     }
     else if (this.value == '%') {
         operator = '/';
@@ -168,6 +168,9 @@ function changeDisplay(e) {
             secondNumber = storedSecondNumber;
         }
         display.textContent = (operate(operator, firstNumber, secondNumber));
+        if (display.scrollWidth >= displayWrap.scrollWidth) {
+            display.textContent = parseFloat(display.textContent).toExponential(4);
+        }
         firstNumber = parseFloat(display.textContent);
         storedSecondNumber = secondNumber;
         secondNumber = null;
@@ -219,6 +222,7 @@ function changeDisplay(e) {
     // Removes firstNumber from display and allows input of secondNumber
     else if (firstNumber != null && keyCount == 0) {
         display.textContent = '';
+        fontEnlarge();
         display.textContent += this.value.toString();
         keyCount += 1;
     }
@@ -227,11 +231,15 @@ function changeDisplay(e) {
         keyCount += 1;
         if (display.scrollWidth >= displayWrap.scrollWidth) {
             if (display.style.fontSize == '') {
-                display.style.fontSize = '4em';
+                fontEnlarge();
             }
-            let currentSize = display.style.fontSize.substr(0,1);
-            let newSize = (currentSize * 0.99) + 'em';
+            let fontSize = display.style.fontSize;
+            let currentSize = fontSize.substr(0,fontSize.length-2);
+            let newSize = (currentSize * 0.9) + 'em';
             display.style.fontSize = newSize;
         }
     }
+}
+function fontEnlarge() {
+    display.style.fontSize = '4em';
 }

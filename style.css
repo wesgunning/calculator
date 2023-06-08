@@ -18,8 +18,8 @@ body {
 #calculator {
     display: flex;
     flex-direction: column;
-    min-width: 40vw;
-    max-width: 75vw;
+    min-width: 20vw;
+    width: 30vw;
     height: 75vh;
     border: 2px solid black;
     border-radius: 1rem;
