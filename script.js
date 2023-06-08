@@ -6,6 +6,7 @@ let sum;
 let difference;
 let product;
 let dividend;
+let answer;
 let keyCount;
 let storedSecondNumber;
 
@@ -23,7 +24,7 @@ buttons.forEach((button) => {
 
 // Keypress events
 window.addEventListener('keydown', function(e) {
-        if (e.key == 'Backspace') {
+        if (e.key == 'Backspace' || e.key == '^') {
             changeDisplay(e.key);
         }
         buttons.forEach((button) => {
@@ -71,6 +72,12 @@ function divide(num1, num2) {
     }
 }
 
+// Exponent
+function exponent(num1, num2) {
+    answer = num1 ** num2;
+    return answer;
+}
+
 // Operate
 function operate(operator, firstNumber, secondNumber) {
     if (operator == "+") {
@@ -88,6 +95,10 @@ function operate(operator, firstNumber, secondNumber) {
     else if (operator == "/") {
         divide(firstNumber, secondNumber);
         return dividend;   
+    }
+    else if (operator == "^") {
+        exponent(firstNumber, secondNumber);
+        return answer;
     }
 }
 // Keypress visual
@@ -125,6 +136,30 @@ function changeDisplay(e) {
         }
         else {
             return;
+        }
+    }
+    else if (e == '^') {
+        if (firstNumber == null) {
+            firstNumber = parseFloat(display.textContent);
+            operator = e;
+            keyCount = 0;
+            return;
+        }
+        // Allows new operator key input without storing secondNumber or calling operate()
+        else if (secondNumber == null && keyCount == 0) {
+            operator = e;
+            storedSecondNumber = null;
+            return;
+        }
+        else if (secondNumber == null) {
+            secondNumber = parseFloat(display.textContent);
+            display.textContent = (operate(operator, firstNumber, secondNumber));
+            // Reset
+            firstNumber = parseFloat(display.textContent);
+            storedSecondNumber = secondNumber;
+            secondNumber = null;
+            operator = e;
+            keyCount = 0;
         }
     }
     else if (e.value != undefined && this.value != e.value) {
